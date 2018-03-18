@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+ruby '2.5.0'
 
 gem 'rails', '~> 5.1.5'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -15,6 +16,7 @@ gem 'devise'
 gem 'devise_token_auth'
 group :development, :test do
   gem 'pry'
+  gem 'faker'
 end
 
 group :development do
