@@ -6,6 +6,7 @@ import pokemons from './pokemons';
 const rootReducer = combineReducers({
   user,
   flash,
+  pokemons,
 });
 
 export default rootReducer;
