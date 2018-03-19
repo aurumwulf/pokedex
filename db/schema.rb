@@ -17,9 +17,6 @@ ActiveRecord::Schema.define(version: 20180318230330) do
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
-    t.integer "national_id"
-    t.string "type"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

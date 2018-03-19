@@ -36,15 +36,11 @@ class FetchPokemons extends React.Component {
     } else {
       return (
         <Dimmer active>
-          <Loader>Loading...</Loader>
+          <Loader>Finding your Pokédex...</Loader>
         </Dimmer>
       );
     }
   }
 }
-
-const mapStateToProps = state => {
-  return { pokemons: state.pokemons };
-};
 
 export default connect()(FetchPokemons);
