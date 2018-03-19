@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
+import FetchPokemons from './FetchPokemons';
 
 class App extends Component {
   render() {
@@ -18,9 +19,21 @@ class App extends Component {
         <Flash />
         <FetchUser>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <AuthRoute exact path='/login' component={Login} />
-            <AuthRoute exact path='/register' component={Register} />
+            <Route exact path="/" component={Home} />
+            <Route
+              path="/pokedex"
+              component={FetchPokemons}
+            />
+            <AuthRoute
+              exact
+              path="/login"
+              component={Login}
+            />
+            <AuthRoute
+              exact
+              path="/register"
+              component={Register}
+            />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

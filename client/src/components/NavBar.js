@@ -18,7 +18,9 @@ class NavBar extends Component {
         <Menu.Menu position="right">
           <Menu.Item
             name="Logout"
-            onClick={() => dispatch(handleLogout(history))}
+            onClick={() =>
+              dispatch(handleLogout(history))
+            }
           />
         </Menu.Menu>
       );
@@ -49,6 +51,14 @@ class NavBar extends Component {
               Home
             </Menu.Item>
           </Link>
+          <Link to="/pokedex">
+            <Menu.Item
+              name="pokedex"
+              active={activeItem === 'pokedex'}
+              onClick={this.handleItemClick}>
+              Pokédex
+            </Menu.Item>
+          </Link>
           {this.rightNavs()}
         </Menu>
       </div>
@@ -60,4 +70,6 @@ const mapStateToProps = state => {
   return { user: state.user };
 };
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(
+  connect(mapStateToProps)(NavBar),
+);
