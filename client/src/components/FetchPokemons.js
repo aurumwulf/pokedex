@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { getPokemons } from '../actions/pokemons';
-// import Pokemons from './Pokemons';
-// import PokemonView from './PokemonView';
+import Pokemons from './Pokemons';
 import { Loader, Dimmer } from 'semantic-ui-react';
 
 class FetchPokemons extends React.Component {
@@ -20,18 +20,11 @@ class FetchPokemons extends React.Component {
     const { loaded } = this.state;
     if (loaded) {
       return (
-        <div>
-          {/* <Route
-            exact
-            path="/pokedex"
-            component={Pokemons}
-          />
-          <Route
-            exact
-            path="/pokedex/:id"
-            component={PokemonView}
-          /> */}
-        </div>
+        <Route
+          exact
+          path="/pokedex"
+          component={Pokemons}
+        />
       );
     } else {
       return (
