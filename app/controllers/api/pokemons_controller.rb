@@ -1,8 +1,11 @@
 class Api::PokemonsController < ApplicationController
+  include HTTParty
+
   before_action :set_pokemon, only: [:show, :update, :destroy]
 
   def index
-    render json: Pokemon.all
+    response = HTTParty.get('https://pokeapi.co/api/v2/pokemon/1', format: :plain)
+    render json: JSON.parse(response)
   end
 
   def show
