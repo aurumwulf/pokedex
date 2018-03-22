@@ -1,5 +1,6 @@
 import {
-  POKEMONS,
+  LIST_POKEMON,
+  GET_POKEMON,
   ADD_POKEMON,
   UPDATE_POKEMON,
   DELETE_POKEMON,
@@ -7,8 +8,10 @@ import {
 
 const pokemons = (state = [], action) => {
   switch (action.type) {
-    case POKEMONS:
-      return action.pokemons;
+    case LIST_POKEMON:
+      return action.pokemon;
+    case GET_POKEMON:
+      return action.pokemon;
     case ADD_POKEMON:
       return [action.pokemon, ...state];
     case UPDATE_POKEMON:

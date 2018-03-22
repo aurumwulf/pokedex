@@ -1,18 +1,30 @@
 import axios from 'axios';
 
-export const POKEMONS = 'POKEMONS';
+export const LIST_POKEMON = 'LIST_POKEMON';
+export const GET_POKEMON = 'GET_POKEMON';
 export const ADD_POKEMON = 'ADD_POKEMON';
 export const UPDATE_POKEMON = 'UPDATE_POKEMON';
 export const DELETE_POKEMON = 'DELETE_POKEMON';
 
-export const getPokemons = callback => {
+export const listPokemon = () => {
+  return dispatch => {
+    axios.get('/api/pokedex/').then(res =>
+      dispatch({
+        type: LIST_POKEMON,
+        pokemon: res.data,
+      }),
+    );
+  };
+};
+
+export const getPokemon = callback => {
   return dispatch => {
     axios
       .get('/api/pokemons/')
       .then(res =>
         dispatch({
-          type: POKEMONS,
-          pokemons: res.data,
+          type: GET_POKEMON,
+          pokemon: res.data,
         }),
       )
       .then(callback);

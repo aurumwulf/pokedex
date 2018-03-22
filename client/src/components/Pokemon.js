@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -8,11 +7,11 @@ import {
   Grid,
   Card,
   Divider,
+  Button,
 } from 'semantic-ui-react';
-import styled from 'styled-components';
 
-class Pokemons extends React.Component {
-  displayPokedex = () => {
+class Pokemon extends React.Component {
+  displayPokemon = () => {
     return (
       <Grid.Row>
         {/* {this.props.pokemons.map(p => (
@@ -33,9 +32,18 @@ class Pokemons extends React.Component {
         <Header as="h1" textAlign="center">
           Your Pokédex
         </Header>
+        <Divider hidden />
+        <Grid centered>
+          <Link to="/pokedex/add">
+            <Button compact circular>
+              Add Seen Pokémon
+            </Button>
+          </Link>
+        </Grid>
+        <Divider hidden />
         <Divider />
         <Grid columns={3} divided>
-          {this.displayPokedex()}
+          {this.displayPokemon()}
         </Grid>
       </Container>
     );
@@ -43,7 +51,7 @@ class Pokemons extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { pokemons: state.pokemons };
+  return { pokemon: state.pokemon };
 };
 
-export default connect(mapStateToProps)(Pokemons);
+export default connect(mapStateToProps)(Pokemon);
