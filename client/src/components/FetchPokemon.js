@@ -11,10 +11,8 @@ class FetchPokemon extends React.Component {
   state = { loaded: false };
 
   componentDidMount() {
-    this.props.dispatch(
-      getPokemon(this.setLoaded),
-      listPokemon(),
-    );
+    this.props.dispatch(getPokemon(this.setLoaded));
+    this.props.dispatch(listPokemon());
   }
 
   setLoaded = () => {

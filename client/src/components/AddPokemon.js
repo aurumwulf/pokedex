@@ -8,20 +8,22 @@ import {
   Divider,
   Grid,
   Header,
+  Image,
 } from 'semantic-ui-react';
 
 class AddPokemon extends React.Component {
   listPokemon() {
     const { list } = this.props;
-    // <Grid.Row>
-    //   {this.props.list.map(p => (
-    //   <Card key={p.id}>
-    //     <Card.Content>
-    //       <Card.Header>{p.name}</Card.Header>
-    //     </Card.Content>
-    //   </Card>
-    // ))}
-    // </Grid.Row>;
+    return (
+      <Grid.Row>
+        <Card key={list.id}>
+          <Image avatar src={list.sprites} />
+          <Card.Content>
+            <Card.Header>{list.name}</Card.Header>
+          </Card.Content>
+        </Card>
+      </Grid.Row>
+    );
   }
 
   render() {
@@ -35,14 +37,14 @@ class AddPokemon extends React.Component {
         <Grid centered>
           <Link to="/pokedex">
             <Button compact circular>
-              Back
+              Back to Collection
             </Button>
           </Link>
         </Grid>
         <Divider hidden />
         <Divider />
         <Grid columns={3} divided>
-          {/* {this.listPokemon()} */}
+          {this.listPokemon()}
         </Grid>
       </Container>
     );
