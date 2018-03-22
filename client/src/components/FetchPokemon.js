@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import {
-  getPokemon,
-  listPokemon,
-} from '../actions/pokemons';
+import { getPokemon } from '../actions/pokemons';
+import { listPokemon } from '../actions/list';
 import Pokemon from './Pokemon';
-import ListPokemon from './ListPokemon';
+import AddPokemon from './AddPokemon';
 import { Loader, Dimmer } from 'semantic-ui-react';
 
 class FetchPokemon extends React.Component {
@@ -15,7 +13,7 @@ class FetchPokemon extends React.Component {
   componentDidMount() {
     this.props.dispatch(
       getPokemon(this.setLoaded),
-      // listPokemon(),
+      listPokemon(),
     );
   }
 
@@ -36,7 +34,7 @@ class FetchPokemon extends React.Component {
           <Route
             exact
             path="/pokedex/add"
-            component={ListPokemon}
+            component={AddPokemon}
           />
         </div>
       );

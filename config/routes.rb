@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :pokemons
 
-    get 'pokedex', to: 'pokedex#index'
+    get 'pokedex', to: 'pokemons#pokedex'
   end
 
   #Do not place any routes below this one
