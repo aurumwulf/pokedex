@@ -5,11 +5,11 @@ export const ADD_POKEMON = 'ADD_POKEMON';
 export const UPDATE_POKEMON = 'UPDATE_POKEMON';
 export const DELETE_POKEMON = 'DELETE_POKEMON';
 
-export const getPokemon = callback => {
-  return dispatch => {
+export const getPokemon = (callback) => {
+  return (dispatch) => {
     axios
       .get('/api/pokemons/')
-      .then(res =>
+      .then((res) =>
         dispatch({
           type: GET_POKEMON,
           pokemon: res.data,
@@ -19,11 +19,11 @@ export const getPokemon = callback => {
   };
 };
 
-export const addPokemon = pokemon => {
-  return dispatch => {
+export const addPokemon = (pokemon) => {
+  return (dispatch) => {
     axios
       .post('/api/pokemons/', { pokemon })
-      .then(res =>
+      .then((res) =>
         dispatch({
           type: ADD_POKEMON,
           pokemon: res.data,
@@ -32,11 +32,11 @@ export const addPokemon = pokemon => {
   };
 };
 
-export const updatePokemon = pokemon => {
-  return dispatch => {
+export const updatePokemon = (pokemon) => {
+  return (dispatch) => {
     axios
       .put(`/api/pokemons/${pokemon.id}`, { pokemon })
-      .then(res =>
+      .then((res) =>
         dispatch({
           type: UPDATE_POKEMON,
           pokemon: res.data,
@@ -45,11 +45,11 @@ export const updatePokemon = pokemon => {
   };
 };
 
-export const deletePokemon = pokemon_id => {
-  return dispatch => {
+export const deletePokemon = (pokemon_id) => {
+  return (dispatch) => {
     axios
       .delete(`/api/pokemons/${pokemon_id}`)
-      .then(res =>
+      .then((res) =>
         dispatch({
           type: DELETE_POKEMON,
           pokemon_id,

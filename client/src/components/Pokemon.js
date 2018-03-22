@@ -50,7 +50,7 @@ class Pokemon extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { pokemon: state.pokemons };
 };
 

@@ -13,13 +13,15 @@ import {
 
 class AddPokemon extends React.Component {
   listPokemon() {
-    const { list } = this.props;
+    const {
+      list: { name, id, sprites = {} },
+    } = this.props;
     return (
       <Grid.Row>
-        <Card key={list.id}>
-          <Image avatar src={list.sprites} />
+        <Card key={id}>
+          <Image src={sprites.front_default} />
           <Card.Content>
-            <Card.Header>{list.name}</Card.Header>
+            <Card.Header>{name}</Card.Header>
           </Card.Content>
         </Card>
       </Grid.Row>
@@ -51,7 +53,7 @@ class AddPokemon extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { list: state.list };
 };
 
