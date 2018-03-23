@@ -17,14 +17,18 @@ class AddPokemon extends React.Component {
       list: { name, id, sprites = {} },
     } = this.props;
     return (
-      <Grid.Row>
-        <Card key={id}>
-          <Image src={sprites.front_default} />
-          <Card.Content>
-            <Card.Header>{name}</Card.Header>
-          </Card.Content>
-        </Card>
-      </Grid.Row>
+      <Card key={id}>
+        <Card.Content>
+          <Image
+            floated="right"
+            size="tiny"
+            src={sprites.front_default}
+          />
+          <Card.Header>{name}</Card.Header>
+          <Card.Meta />
+          <Card.Description />
+        </Card.Content>
+      </Card>
     );
   }
 
@@ -45,8 +49,12 @@ class AddPokemon extends React.Component {
         </Grid>
         <Divider hidden />
         <Divider />
-        <Grid columns={3} divided>
-          {this.listPokemon()}
+        <Grid columns={9} divided>
+          <Grid.Row>
+            <Card.Group>
+              {this.listPokemon()}
+            </Card.Group>
+          </Grid.Row>
         </Grid>
       </Container>
     );
