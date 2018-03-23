@@ -14,8 +14,14 @@ import {
 class AddPokemon extends React.Component {
   listPokemon() {
     const {
-      list: { name, id, sprites = {} },
+      list: {
+        name,
+        id,
+        sprites = {},
+        types = [{ type: {} }],
+      },
     } = this.props;
+    debugger;
     return (
       <Card key={id}>
         <Card.Content>
@@ -25,7 +31,9 @@ class AddPokemon extends React.Component {
             src={sprites.front_default}
           />
           <Card.Header>{name}</Card.Header>
-          <Card.Meta />
+          {/* {types.map((t) => { */}
+          <Card.Meta>{types[0].type.name}</Card.Meta>
+          {/* })} */}
           <Card.Description />
         </Card.Content>
       </Card>
