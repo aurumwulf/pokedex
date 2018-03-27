@@ -8,7 +8,7 @@ import {
   Divider,
   Grid,
   Header,
-  List,
+  Image,
 } from 'semantic-ui-react';
 
 class ListPokemon extends React.Component {
@@ -28,10 +28,23 @@ class ListPokemon extends React.Component {
     } = this.props;
 
     return results.map((pokemon, index) => (
-      <List.Item>
-        {this.indexPokemon(index)} -{' '}
-        {this.capitalize(pokemon.name)}
-      </List.Item>
+      <Card>
+        <Card.Content>
+          <Image
+            floated="right"
+            size="mini"
+            src={
+              '/assets/images/' + (index + 1) + '.png'
+            }
+          />
+          <Card.Header>
+            {this.capitalize(pokemon.name)}
+          </Card.Header>
+          <Card.Meta>
+            #{this.indexPokemon(index)}
+          </Card.Meta>
+        </Card.Content>
+      </Card>
     ));
   }
 
@@ -52,7 +65,12 @@ class ListPokemon extends React.Component {
         </Grid>
         <Divider hidden />
         <Divider />
-        <List>{this.listPokemon()}</List>
+        <Divider hidden />
+        <Grid>
+          <Card.Group itemsPerRow={3}>
+            {this.listPokemon()}
+          </Card.Group>
+        </Grid>
       </Container>
     );
   }
