@@ -13,7 +13,7 @@ import {
 class Pokemon extends React.Component {
   displayPokemon = () => {
     return (
-      <Grid.Row>
+      <Grid.Column width={4}>
         {/* {this.props.pokemons.map(p => (
           <Card key={p.id}>
             <Card.Content>
@@ -21,7 +21,7 @@ class Pokemon extends React.Component {
             </Card.Content>
           </Card>
         ))} */}
-      </Grid.Row>
+      </Grid.Column>
     );
   };
 
@@ -34,7 +34,7 @@ class Pokemon extends React.Component {
         </Header>
         <Divider hidden />
         <Grid centered>
-          <Link to="/pokedex/add">
+          <Link to="/pokedex/list">
             <Button compact circular>
               Add Seen Pokémon
             </Button>
@@ -42,8 +42,8 @@ class Pokemon extends React.Component {
         </Grid>
         <Divider hidden />
         <Divider />
-        <Grid columns={3} divided>
-          {this.displayPokemon()}
+        <Grid>
+          <Grid.Row>{this.displayPokemon()}</Grid.Row>
         </Grid>
       </Container>
     );

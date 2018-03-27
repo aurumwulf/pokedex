@@ -8,6 +8,7 @@ export const listPokemon = () => {
       dispatch({
         type: LIST_POKEMON,
         list: res.data,
+        headers: res.headers,
       }),
     );
   };

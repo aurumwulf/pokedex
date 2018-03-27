@@ -13,6 +13,7 @@ export const getPokemon = (callback) => {
         dispatch({
           type: GET_POKEMON,
           pokemon: res.data,
+          headers: res.headers,
         }),
       )
       .then(callback);
@@ -27,6 +28,7 @@ export const addPokemon = (pokemon) => {
         dispatch({
           type: ADD_POKEMON,
           pokemon: res.data,
+          headers: res.headers,
         }),
       );
   };
@@ -40,6 +42,7 @@ export const updatePokemon = (pokemon) => {
         dispatch({
           type: UPDATE_POKEMON,
           pokemon: res.data,
+          headers: res.headers,
         }),
       );
   };
@@ -53,6 +56,7 @@ export const deletePokemon = (pokemon_id) => {
         dispatch({
           type: DELETE_POKEMON,
           pokemon_id,
+          headers: res.headers,
         }),
       );
   };

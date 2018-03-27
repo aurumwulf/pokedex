@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { getPokemon } from '../actions/pokemons';
 import { listPokemon } from '../actions/list';
 import Pokemon from './Pokemon';
-import AddPokemon from './AddPokemon';
+import ListPokemon from './ListPokemon';
 import { Loader, Dimmer } from 'semantic-ui-react';
 
 class FetchPokemon extends React.Component {
@@ -31,8 +31,8 @@ class FetchPokemon extends React.Component {
           />
           <Route
             exact
-            path="/pokedex/add"
-            component={AddPokemon}
+            path="/pokedex/list"
+            component={ListPokemon}
           />
         </div>
       );
