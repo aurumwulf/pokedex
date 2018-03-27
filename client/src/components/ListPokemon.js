@@ -17,6 +17,11 @@ class ListPokemon extends React.Component {
       name.charAt(0).toUpperCase() + name.slice(1)
     );
   }
+
+  indexPokemon(number) {
+    return ('00' + (number + 1)).slice(-3);
+  }
+
   listPokemon() {
     const {
       list: { results = [{ name: '' }] },
@@ -24,6 +29,7 @@ class ListPokemon extends React.Component {
 
     return results.map((pokemon, index) => (
       <List.Item>
+        {this.indexPokemon(index)} -{' '}
         {this.capitalize(pokemon.name)}
       </List.Item>
     ));
