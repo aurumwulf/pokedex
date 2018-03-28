@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { getPokemon } from '../actions/pokemons';
-import { listPokemon } from '../actions/list';
+import { listPokemon } from '../actions/pokedex';
 import Pokemon from './Pokemon';
 import ListPokemon from './ListPokemon';
+import PokemonView from './PokemonView';
 import { Loader, Dimmer } from 'semantic-ui-react';
 
 class FetchPokemon extends React.Component {
@@ -33,6 +34,11 @@ class FetchPokemon extends React.Component {
             exact
             path="/pokedex/list"
             component={ListPokemon}
+          />
+          <Route
+            exact
+            path="/pokedex/:id"
+            component={PokemonView}
           />
         </div>
       );

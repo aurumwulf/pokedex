@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { showPokemon } from '../actions/pokemon';
 import {
   Button,
   Card,
@@ -24,11 +25,11 @@ class ListPokemon extends React.Component {
 
   listPokemon() {
     const {
-      list: { results = [{ name: '' }] },
+      list: { results = [{ name: '', url: '' }] },
     } = this.props;
 
     return results.map((pokemon, index) => (
-      <Card>
+      <Card key={index + 1}>
         <Card.Content>
           <Image
             floated="right"
@@ -43,6 +44,20 @@ class ListPokemon extends React.Component {
           <Card.Meta>
             #{this.indexPokemon(index)}
           </Card.Meta>
+        </Card.Content>
+        <Card.Content extra>
+          <Link to={'/pokedex/' + (index + 1)}>
+            <Button
+              compact
+              circular
+              onClick={() =>
+                this.props.dispatch(
+                  showPokemon(pokemon.url),
+                )
+              }>
+              View Properties
+            </Button>
+          </Link>
         </Card.Content>
       </Card>
     ));
@@ -77,7 +92,7 @@ class ListPokemon extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { list: state.list };
+  return { list: state.pokedex };
 };
 
 export default connect(mapStateToProps)(ListPokemon);
