@@ -8,10 +8,10 @@ class Api::PokemonsController < ApplicationController
     render json: JSON.parse(response.body)
   end 
 
-  def pokedex_search
-    response = HTTParty.get(params[:url])
-    render json: JSON.parse(response.body)
-  end
+  # def pokedex_search
+  #   response = HTTParty.get(params[:url])
+  #   render json: JSON.parse(response.body)
+  # end
 
   def index
     render json: Pokemon.all

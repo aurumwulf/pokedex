@@ -35,11 +35,11 @@ class FetchPokemon extends React.Component {
             path="/pokedex/list"
             component={ListPokemon}
           />
-          <Route
+          {/* <Route
             exact
             path="/pokedex/:id"
             component={PokemonView}
-          />
+          /> */}
         </div>
       );
     } else {
