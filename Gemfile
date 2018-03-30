@@ -16,7 +16,7 @@ gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'httparty'
-
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry'

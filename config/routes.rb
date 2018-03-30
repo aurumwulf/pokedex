@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     resources :pokemons
 
     get 'pokedex', to: 'pokemons#pokedex'
-    get 'pokedex_search', to: 'pokemons#pokedex_search'
   end
 
   #Do not place any routes below this one

@@ -4,14 +4,9 @@ class Api::PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:update, :destroy]
 
   def pokedex
-    response = HTTParty.get('https://pokeapi.co/api/v2/pokemon/?limit=151')
+    response = HTTParty.get(params[:url])
     render json: JSON.parse(response.body)
   end 
-
-  # def pokedex_search
-  #   response = HTTParty.get(params[:url])
-  #   render json: JSON.parse(response.body)
-  # end
 
   def index
     render json: Pokemon.all

@@ -5,7 +5,6 @@ import {
   Container,
   Header,
   Grid,
-  Card,
   Divider,
   Button,
 } from 'semantic-ui-react';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { showPokemon } from '../actions/pokemon';
+import { listPokemon } from '../actions/pokedex';
 import {
   Button,
   Card,
@@ -11,12 +11,36 @@ import {
   Header,
   Image,
 } from 'semantic-ui-react';
+import InfiniteScroll from 'react-infinite-scroller';
+
+const styles = {
+  scroller: { height: '60vh', overflow: 'auto' },
+};
 
 class ListPokemon extends React.Component {
+  state = {
+    page: 1,
+    total_pages: 48,
+  };
+
+  componentDidMount() {
+    const initialUrl =
+      'https://pokeapi.co/api/v2/pokemon/?limit=20';
+    const { page } = this.state;
+    this.props.dispatch(listPokemon(initialUrl, page));
+  }
+
+  loadMore = () => {
+    const { page } = this.state;
+    const { list: { next } } = this.props;
+    debugger;
+    const nextPage = page + 1;
+    this.props.dispatch(listPokemon(next, nextPage));
+    this.setState({ page: nextPage });
+  };
+
   capitalize(name) {
-    return (
-      name.charAt(0).toUpperCase() + name.slice(1)
-    );
+    return name.charAt(0).toUpperCase() + name.slice(1);
   }
 
   indexPokemon(number) {
@@ -25,7 +49,7 @@ class ListPokemon extends React.Component {
 
   listPokemon() {
     const {
-      list: { results = [{ name: '', url: '' }] },
+      list: { results = [{ name: '' }] },
     } = this.props;
 
     return results.map((pokemon, index) => (
@@ -34,36 +58,20 @@ class ListPokemon extends React.Component {
           <Image
             floated="right"
             size="mini"
-            src={
-              '/assets/images/' + (index + 1) + '.png'
-            }
+            src={'/assets/images/' + (index + 1) + '.png'}
           />
           <Card.Header>
             {this.capitalize(pokemon.name)}
           </Card.Header>
-          <Card.Meta>
-            #{this.indexPokemon(index)}
-          </Card.Meta>
-        </Card.Content>
-        <Card.Content extra>
-          <Link to={'/pokedex/' + (index + 1)}>
-            <Button
-              compact
-              circular
-              onClick={() =>
-                this.props.dispatch(
-                  showPokemon(pokemon.url),
-                )
-              }>
-              View Properties
-            </Button>
-          </Link>
+          <Card.Meta>#{this.indexPokemon(index)}</Card.Meta>
         </Card.Content>
       </Card>
     ));
   }
 
   render() {
+    const { page, totalPages } = this.state;
+
     return (
       <Container>
         <br />
@@ -81,11 +89,19 @@ class ListPokemon extends React.Component {
         <Divider hidden />
         <Divider />
         <Divider hidden />
-        <Grid>
-          <Card.Group itemsPerRow={3}>
-            {this.listPokemon()}
-          </Card.Group>
-        </Grid>
+        <InfiniteScroll
+          pageStart={page}
+          loadMore={() => this.loadMore()}
+          hasMore={page < totalPages}
+          useWindow={false}>
+          <Grid>
+            <Card.Group
+              itemsPerRow={4}
+              style={styles.scroller}>
+              {this.listPokemon()}
+            </Card.Group>
+          </Grid>
+        </InfiniteScroll>
       </Container>
     );
   }
